@@ -1,0 +1,106 @@
+.myHome{
+    width: 100%;
+    height: 100%;
+    .content{
+        width: 100%;
+        height: calc(100% - 60px); // 假设头部高度为60px
+        .videoContainer {
+            position: relative;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+            .video{
+                width: 100%;
+                height: 700px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                .videoPlayer {
+                    width: 100%;
+                    height: 100%;
+                    object-fit:cover;
+                }
+            }
+            .waves {
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
+                .wave1 {
+                    fill: rgba(255, 255, 255);
+                    animation: wave 8s linear infinite;
+                }
+               
+            }
+        }
+        .textContainer{
+            color: #fff;
+            position: absolute;
+            margin-left: 200px;
+            h1{
+                width:600px;
+                font-size: 50px;
+            }
+            h2{
+                width:600px;
+            }
+            .gird{
+                display: flex;
+                .gridItem{
+                    background-color: #fff;
+                    width: 300px;
+                    height: 200px;
+                    margin-top: 40px;
+                    padding: 0 20px;
+                    margin-right: 30px;
+                    border-radius: 10px;
+                    h3{
+                        color: #086cc9;
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+                    p{
+                      color: #439cf0;
+
+                    }
+                    button{
+                        margin-top: 10px;
+                        margin-left: 10%;
+                        width: 80%;
+                        border-radius: 20px;
+                        height: 40px;
+                        background-color: #1890ff;
+                        color: #fff;
+                        font-weight: 600;
+                        border: none;
+                        &:hover{
+                            background-color: #086cc9;
+                        }
+                    }
+                    .button{
+                        margin-top: 10px;
+                        margin-left: 10%;
+                        width: 80%;
+                        border-radius: 20px;
+                        height: 40px;
+                        background-color: #26e05e;
+                        color: #fff;
+                        font-weight: 600;
+                        border: none;
+                        &:hover{
+                            background-color: #1ab41a;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

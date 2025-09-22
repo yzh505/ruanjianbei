@@ -1,0 +1,113 @@
+@import './com.module.scss';
+.pptDetailContainer {
+  padding: 24px;
+  background: #f5f5f5;
+  height: 87vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  .header {
+    margin-bottom: 24px;
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .breadcrumb {
+      margin-bottom: 16px;
+    }
+  }
+
+  .mainContent {
+    display: flex;
+    gap: 24px;
+
+    .pptSection {
+      flex: 2;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 0;
+
+      .pptPicture {
+        width: 96%;
+        aspect-ratio: 16/9;
+        background: #f0f0f0;
+        border-radius: 8px;
+        object-fit: contain;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .iframe{
+         width: 96%;
+        aspect-ratio: 16/9;
+        background: #f0f0f0;
+        border-radius: 8px;
+        object-fit: contain;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .pptName {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+    }
+
+    .infoSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .infoCard {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        .title {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 16px;
+        }
+        .infoItem {
+          margin-bottom: 12px;
+          label {
+            color: #666;
+            margin-right: 8px;
+          }
+        }
+      }
+      .descCard {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        .descContent {
+          line-height: 1.6;
+          color: #333;
+        }
+      }
+      .outlineCard {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        .outlineContent {
+          line-height: 1.6;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+.emptyText {
+  text-align: center;
+  color: #999;
+  padding: 24px;
+}

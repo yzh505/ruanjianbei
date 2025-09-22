@@ -1,0 +1,372 @@
+.pptPlayer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+  scrollbar-width: none;
+  height: 100vh;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    .headerLeft {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1f1f1f;
+      }
+    }
+
+    .headerRight {
+      display: flex;
+      gap: 20px;
+      button {
+        height: 36px;
+        padding: 0 24px;
+        border-radius: 18px;
+        font-weight: 500;
+
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    overflow: auto;
+    scrollbar-width: none;
+
+    .leftSection {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      min-width: 0; // 防止flex子元素溢出
+
+      .previewArea {
+        flex: 1;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        min-height: 0; // 防止iframe溢出
+        height:90%;
+        width: 100%;
+        .iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+      }
+
+      .outlineArea {
+        width: 100%;
+        height: 280px;
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        overflow-y: auto;
+
+        .sectionTitle {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 16px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid #f0f0f0;
+
+          span {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f1f1f;
+          }
+        }
+
+        :global(.ant-collapse) {
+          background: transparent;
+
+          .ant-collapse-item {
+            border-bottom: 1px solid #f0f0f0;
+
+            .ant-collapse-header {
+              padding: 12px 0;
+              color: #1f1f1f;
+              font-weight: 500;
+            }
+
+            .ant-collapse-content {
+              color: #666;
+            }
+          }
+        }
+      }
+    }
+
+    .rightSection {
+      width: 370px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+
+      .pptInfo {
+        .pptTitle {
+          font-size: 20px;
+          font-weight: 600;
+          color: #1f1f1f;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .infoItem {
+          margin-bottom: 16px;
+
+          label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+          }
+
+          span {
+            font-size: 15px;
+            color: #1f1f1f;
+          }
+
+          .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            .tag {
+              padding: 4px 12px;
+              background: #f0f7ff;
+              color: #1890ff;
+              border-radius: 12px;
+              font-size: 13px;
+            }
+          }
+        }
+
+        .description {
+          margin-top: 24px;
+          padding-top: 16px;
+          border-top: 1px solid #f0f0f0;
+
+          label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+          }
+
+          p {
+            font-size: 14px;
+            color: #1f1f1f;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
+     .bottom{
+      width: 94%;
+      margin-left:3%;
+      height: 100px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      button{
+        height: 40px;
+        width: 120px;
+        border-radius: 10px;
+        border: none;
+        margin-top: 16px;
+        color: #fff;
+        background-color: #389DFA;
+        box-shadow: 1px  2px 4px  rgba(139, 203, 233);
+        transform-origin: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        &:hover{
+            transform: scale(1.1); 
+            box-shadow: 2px 4px 8px rgba(139, 203, 233); 
+        }
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            &:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+      }
+    }
+
+    .saveModalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .saveModalContent {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 500px;
+      max-width: 90%;
+      position: relative;
+    }
+    
+    .modalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      
+      h3 {
+          margin: 0;
+          color: #333;
+      }
+      
+      .closeButton {
+          background: none;
+          border: none;
+          color: #666;
+          cursor: pointer;
+          padding: 5px;
+          
+          &:hover {
+              color: #333;
+          }
+      }
+    }
+    
+    .saveOptions {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      
+      .option {
+          flex: 1;
+          padding: 15px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+              border-color: #389DFA;
+          }
+          
+          &.selected {
+              border-color: #389DFA;
+              background-color: #f0f7ff;
+          }
+          
+          .icon {
+              color: #389DFA;
+          }
+          
+          .text {
+              color: #333;
+              font-size: 14px;
+          }
+      }
+    }
+    
+    .formGroup {
+        margin-bottom: 15px;
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            
+            &:focus {
+                outline: none;
+                border-color: #389DFA;
+            }
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+    }
+    
+    .buttonGroup {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+        
+        button {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            &.cancelButton {
+                background-color: #f5f5f5;
+                color: #666;
+                border: 1px solid #ddd;
+                
+                &:hover {
+                    background-color: #e0e0e0;
+                }
+            }
+            
+            &.confirmButton {
+                background-color: #389DFA;
+                color: white;
+                border: none;
+                
+                &:hover:not(:disabled) {
+                    background-color: #2980b9;
+                }
+                
+                &:disabled {
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}

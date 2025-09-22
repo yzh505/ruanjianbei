@@ -1,0 +1,127 @@
+@import 'src/scss/_variables.scss';
+.resourceVisualization {
+ height: 105%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.visualizationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+    color: #1f1f1f;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.visualizationControls {
+  display: flex;
+  align-items: center;
+}
+
+.statCardsContainer {
+  margin-bottom: 24px;
+}
+
+.statCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  height: 100px;
+}
+
+.statCard {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0 20px;
+  :global {
+    .ant-statistic-title {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .ant-statistic-content {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  .statCardTitle{
+    width: 60px;
+    height: 60px;
+    background-color: #1732c7;
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.chartsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.chartWrapper {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+.chartsRows {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+.row {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  margin-bottom: 0;
+}
+.lineChartWrapper { flex: 3; min-width: 0; }
+.pieChartWrapper { flex: 1; min-width: 0; }
+.barChartWrapper { flex: 3; min-width: 0; }
+.radarChartWrapper { flex: 2; min-width: 0; }
+.sunburstChartWrapper, .areaChartWrapper { flex: 1; min-width: 0; }
+
+// 保证图表容器美观
+.lineChartWrapper, .pieChartWrapper, .barChartWrapper, .radarChartWrapper, .sunburstChartWrapper, .areaChartWrapper {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .lineChartWrapper, .pieChartWrapper, .barChartWrapper, .radarChartWrapper, .sunburstChartWrapper, .areaChartWrapper {
+    width: 100%;
+    min-width: 0;
+  }
+}

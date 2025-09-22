@@ -1,0 +1,613 @@
+.aiSolveSection {
+  margin-top: 24px;
+}
+
+.aiSolveCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.aiSolveTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.aiSolveLayout {
+  display: flex;
+  gap: 24px;
+  height: 530px;
+
+  .inputPanel {
+    flex: 0 0 40%;
+    padding-right: 24px;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #e6e6e6;
+      border-radius: 3px;
+    }
+
+    .inputTypeSelector {
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      
+      :global {
+        .ant-radio-group {
+          display: flex;
+          width: 100%;
+          
+          .ant-radio-button-wrapper {
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s;
+            
+            &:hover {
+              color: #1890ff;
+            }
+            
+            &.ant-radio-button-wrapper-checked {
+              background: #1890ff;
+              border-color: #1890ff;
+              color: #fff;
+              &:hover {
+                background: #067ae7;
+              }
+            }
+            
+            .anticon {
+              margin-right: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .resultPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.uploadArea {
+  margin-bottom: 24px;
+}
+
+.imageUploader {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.uploadStats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 16px;
+  padding: 12px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  
+  .statItem {
+    text-align: center;
+    
+    :global(.anticon) {
+      font-size: 24px;
+      color: #1890ff;
+      margin-bottom: 8px;
+    }
+    
+    span {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    
+    p {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+    }
+  }
+}
+
+.docUploader {
+  width: 100%;
+  margin-bottom: 24px;
+  
+  .uploadButton {
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    background: #fafafa;
+    border: 2px dashed #d9d9d9;
+    border-radius: 8px;
+    text-align: center;
+    
+    &:hover {
+      border-color: #1890ff;
+      color: #1890ff;
+    }
+    
+    :global(.anticon) {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .supportedFormats {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
+.upload{
+  margin-left: 30%;
+  margin-bottom: 20px;
+}
+
+.textInput {
+  margin: 16px 0 24px;
+  height: 200px;
+  width: 100%;
+
+  
+  :global(.ant-input) {
+    border-radius: 8px;
+    resize: none;
+    height: 200px;
+    &:hover {
+      border-color: #40a9ff;
+    }
+    
+    &:focus {
+      border-color: #1890ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+    }
+  }
+}
+
+.solveActions {
+  .solveButton {
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 22px;
+    background: linear-gradient(45deg, #1890ff, #40a9ff);
+    border: none;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    
+    &:hover {
+      background: linear-gradient(45deg, #40a9ff, #69c0ff);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(24, 144, 255, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  .solveStats {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    
+    .statItem {
+      text-align: center;
+      
+      :global(.anticon) {
+        font-size: 20px;
+        color: #1890ff;
+        margin-bottom: 4px;
+      }
+      
+      span {
+        display: block;
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 4px;
+      }
+      
+      p {
+        font-size: 16px;
+        color: #333;
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.resultPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.emptySolution {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 48px;
+  
+  :global(.anticon-robot) {
+    font-size: 48px;
+    color: #1890ff;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  .features {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    
+    .featureItem {
+      text-align: center;
+      
+      :global(.anticon) {
+        font-size: 24px;
+        color: #1890ff;
+        margin-bottom: 8px;
+      }
+      
+      span {
+        display: block;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  }
+}
+
+.solutionBox {
+  background: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  .solutionHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    
+    :global(.anticon) {
+      color: #1890ff;
+      font-size: 18px;
+    }
+    
+    span {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .solutionActions {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  
+  .solutionContent {
+    max-width: 650px;
+    padding: 24px;
+    overflow-y: auto;
+    color: #666;
+    scrollbar-width: none;
+    line-height: 1.8;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #e6e6e6;
+      border-radius: 3px;
+    }
+    
+    :global {
+      h1, h2, h3, h4, h5, h6 {
+        color: #333;
+        margin-bottom: 16px;
+      }
+      
+      p {
+        margin-bottom: 12px;
+      }
+      
+      ul, ol {
+        padding-left: 24px;
+        margin-bottom: 16px;
+      }
+      
+      pre {
+        background: #f6f8fa;
+        padding: 16px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 16px 0;
+        
+        code {
+          font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+          font-size: 14px;
+          color: #333;
+        }
+      }
+      
+      // 数学公式样式
+      .katex {
+        font-size: 1.1em;
+      }
+      
+      .katex-display {
+        margin: 1em 0;
+        text-align: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      
+      .katex-inline {
+        margin: 0 0.2em;
+      }
+      
+      .katex-html {
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    }
+  }
+}
+
+.solutionList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  max-height: 450px;
+  gap: 18px;
+  padding: 12px 10px;
+}
+.solutionCard {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(24,144,255,0.08);
+  padding: 18px 22px;
+  border: 1px solid #e6f7ff;
+}
+.solutionQTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0050b3;
+}
+.solutionOptions {
+  margin: 0 0 8px 0;
+  padding-left: 22px;
+  color: #333;
+}
+.solutionAnswer {
+  color: #1890ff;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.solutionAnalysis {
+  color: #888;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.questionActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.saveBtn {
+  background: linear-gradient(45deg, #52c41a, #1890ff);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.saveBtn:hover {
+  background: linear-gradient(45deg, #1890ff, #52c41a);
+}
+.editBtn {
+  border-radius: 4px;
+  font-weight: 500;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  background: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+.editBtn:hover {
+  background: #e6f7ff;
+  color: #0050b3;
+}
+
+:global {
+  .ant-card-head {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 24px;
+  }
+  
+  .ant-card-head-title {
+    padding: 0;
+  }
+  
+  .ant-card-body {
+    padding: 24px;
+  }
+
+  .ant-upload.ant-upload-select-picture-card {
+    width: 100%;
+    height: 160px;
+    margin: 0;
+    background: #fafafa;
+    border: 2px dashed #d9d9d9;
+    
+    &:hover {
+      border-color: #1890ff;
+    }
+  }
+
+  .ant-divider {
+    margin: 24px 0;
+    color: #999;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .aiSolveLayout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .inputPanel {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+    padding-right: 0;
+    padding-bottom: 24px;
+    overflow-y: visible;
+  }
+
+  .resultPanel {
+    padding-top: 24px;
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aiSolveSection {
+    padding: 0 16px;
+  }
+  
+  .solveStats, .uploadStats {
+    flex-direction: column;
+    gap: 16px;
+    
+    .statItem {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  .features {
+    flex-direction: column;
+    gap: 16px;
+  }
+} 
+
+ .uploader {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding:0 50%;
+  padding-bottom: 170px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin: 0;
+  height: 400px;
+  &:hover {
+    border-color: #1890ff;
+  }
+}
+.uploaderContent {
+    text-align: center;
+    margin-bottom: 70px;
+    .uploadIcon {
+      color: #1890ff;
+      margin-bottom: 16px;
+    }
+    .uploadText {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .uploadHint {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+.uploadedFile {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .fileInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    :global(.icon-park-icon) {
+      color: #1890ff;
+    }
+  }
+}
+.uploadActions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  button {
+    min-width: 140px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 20px;
+    font-size: 16px;
+    
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+}
+.upload{
+  width:100%;
+  height: 100%;
+  border: 2px dashed #e8e8e8;
+  padding:  0 20px;
+  border-radius: 20px;
+}

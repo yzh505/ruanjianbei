@@ -1,0 +1,285 @@
+@import '../variables';
+.recommendationsContainer {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  padding: 16px;
+  
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    
+    h{
+      font-size: 28px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+    
+    p {
+      font-size: 16px;
+      color: #666;
+  }
+}
+
+  .dataPanel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .dataCard {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s;
+      
+      &:nth-child(1) {
+        background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+        .value {
+          color: #1890ff;
+        }
+      }
+      
+      &:nth-child(2) {
+        background: linear-gradient(135deg, #f6ffed 0%, #ffffff 100%);
+        .value {
+          color: #52c41a;
+        }
+      }
+      
+      &:nth-child(3) {
+        background: linear-gradient(135deg, #f9f0ff 0%, #ffffff 100%);
+        .value {
+          color: #722ed1;
+        }
+      }
+      
+      &:nth-child(4) {
+        background: linear-gradient(135deg, #fff7e6 0%, #ffffff 100%);
+        .value {
+          color: #fa8c16;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+      .value {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      
+      .label {
+        font-size: 14px;
+    color: #666;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .recommendedResources {
+      flex: 1;
+      background: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(24,144,255,0.08);
+      .resourcesTitle {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 24px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid #e6f7ff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .icon {
+          color: #1890ff;
+          font-size: 26px;
+        }
+      }
+      .resourceListModern {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .resourceModernCard {
+        animation: cardFadeIn 0.6s cubic-bezier(.4,0,.2,1);
+        padding:15px;
+        &:hover {
+          transform: translateY(-4px) scale(1.02);
+          box-shadow: 0 8px 32px rgba(24,144,255,0.18);
+        }
+      }
+      .point{
+        font-size: 20px;
+        h{
+          font-size: 14px;
+        }
+      }
+      .resourceExplanation{
+        margin: 10px 0;
+        font-size: 15;
+        border-radius: 10px;
+        color: #555;
+        background: rgba(230,247,255,0.7);
+        border-radius: 8;
+        padding: 10px 16px;
+        border-left: 4px solid #1890ff;
+        box-shadow: 0 2px 8px #e6f7ff;
+      }
+    }
+
+    .referenceData {
+      width: 340px;
+      background: #fff;
+      padding: 20px 18px 16px 18px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(24,144,255,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .referenceRadar{
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+      }
+      .referenceTitle {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e6f7ff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .icon {
+            color: #1890ff;
+            font-size: 24px;
+          }
+      }
+    
+      .referenceList {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+    
+      .dataItem {
+        margin-bottom: 0;
+        padding: 14px 16px;
+        border-radius: 10px;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+        border: 1px solid #e6f7ff;
+        box-shadow: 0 2px 8px #e6f7ff;
+        &:hover {
+          transform: translateX(4px) scale(1.03);
+          background: #e6f7ff;
+          border-color: #91caff;
+        }
+        .dataTitle {
+          font-size: 16px;
+          font-weight: 600;
+          color: #1a1a1a;
+          margin-bottom: 6px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          .icon {
+            color: #1890ff;
+            font-size: 16px;
+          }
+        }
+        .dataValue {
+          font-size: 14px;
+          color: #1890ff;
+          background: #fff;
+          padding: 6px 10px;
+          border-radius: 6px;
+          border: 1px solid #e6f7ff;
+          .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #e6f4ff;
+            border-radius: 6px;
+            color: #1890ff;
+            margin:4px;
+            font-size: 13px;
+            font-weight: 500;
+          }
+        }
+        @keyframes cardFadeIn {
+          0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+      }
+    }
+  }
+    
+  .bottom {
+      display: flex;
+      gap: 24px;
+    
+      .inputSection {
+        flex: 1;
+        background: #fff;
+        padding: 24px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+        .inputTitle {
+          font-size: 18px;
+          font-weight: 500;
+          color: #1a1a1a;
+          margin-bottom: 16px;
+        }
+      }
+
+    .recommendationSection {
+        flex: 1;
+        background: #fff;
+        padding:0 24px;
+        border-radius: 8px;
+        max-height: 530px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+        .recommendationTitle {
+              font-size: 18px;
+              font-weight: 500;
+              color: #1a1a1a;
+              margin-bottom: 16px;
+        }
+
+      .recommendationItem {
+          padding: 16px;
+          border: 1px solid #f0f0f0;
+          border-radius: 4px;
+          margin-bottom: 16px;
+  
+        .itemTitle {
+          font-size: 16px;
+          font-weight: 500;
+          color: #1a1a1a;
+          margin-bottom: 8px;
+        }
+  
+        .itemDescription {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
+}

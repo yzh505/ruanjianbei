@@ -1,0 +1,180 @@
+@import './com.module.scss';
+.videoDetailContainer {
+  background: #f5f5f5;
+  width: 90%;
+  height: 89vh;
+  margin-top: 20px;
+  margin-left: 5%;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  .header {
+    margin-bottom: 24px;
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .breadcrumb {
+      margin-bottom: 16px;
+    }
+  }
+
+  .mainContent {
+    display: flex;
+    gap: 24px;
+    .videoSection {
+      flex: 2;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      .videoPlayer {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #000;
+      }
+
+      .videoActions {
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .transcriptCard {
+        margin: 16px;
+        
+        .transcriptHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .transcriptContent {
+          max-height: 900px;
+          overflow-y: auto;
+          padding: 12px;
+          border-radius: 4px;
+        }
+      }
+    }
+    .graphCard{
+      width: 100%;
+      max-height: 600px;
+      .graphContainer{
+        max-height: 400px;
+
+      }
+    }
+    .infoSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .infoCard {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        .title {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .statGrid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+
+        .infoItem {
+          margin-bottom: 12px;
+          
+          label {
+            color: #666;
+            margin-right: 8px;
+          }
+        }
+      }
+
+      .summaryCard {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        .summaryContent {
+          line-height: 1.6;
+          color: #333;
+        }
+      }
+
+      .timelineCard {
+        background: #fff;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-width: none;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        .timeRange {
+          color: #666;
+          font-size: 12px;
+        }
+
+        .timeContent {
+          margin-top: 4px;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+.editModal {
+  .modalHeader {
+    margin-bottom: 24px;
+  }
+
+  .formGroup {
+    margin-bottom: 16px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+
+      &:focus {
+        border-color: #1890ff;
+        outline: none;
+      }
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+  }
+}
+
+.emptyText {
+  text-align: center;
+  color: #999;
+  padding: 24px;
+}

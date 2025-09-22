@@ -1,0 +1,498 @@
+@import '../variables';
+
+.analyticsContainer {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+  }
+
+  .dataPanel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .dataCard {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .cardIcon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+        font-size: 24px;
+        color: white;
+      }
+
+      .cardContent {
+        flex: 1;
+
+        .value {
+          font-size: 32px;
+          font-weight: bold;
+          color: #1a1a1a;
+          line-height: 1;
+          margin-bottom: 4px;
+      }
+
+      .label {
+        font-size: 14px;
+        color: #666;
+      }
+      }
+
+      .cardTrend {
+        text-align: right;
+
+        .trendValue {
+          display: block;
+          font-size: 18px;
+          font-weight: bold;
+          color: #52c41a;
+        }
+
+        .trendLabel {
+          font-size: 12px;
+          color: #999;
+        }
+      }
+
+      &.total .cardIcon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      &.generated .cardIcon {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      &.inProgress .cardIcon {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      &.completed .cardIcon {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 32px;
+    align-items: start;
+
+    .contentLeft {
+      min-width: 420px;
+      .statCard {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+
+        .resourceStats {
+        display: flex;
+          flex-direction: column;
+          gap: 16px;
+          height: 100%;
+
+          .resourceStatItem {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .resourceIcon {
+              width: 48px;
+              height: 48px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 16px;
+              font-size: 20px;
+              color: white;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          }
+
+            .resourceInfo {
+              flex: 1;
+
+              .resourceType {
+                font-size: 16px;
+                font-weight: 600;
+                color: #1a1a1a;
+            margin-bottom: 8px;
+          }
+
+              .resourceCount {
+                font-size: 24px;
+                font-weight: bold;
+            color: #1890ff;
+                margin-bottom: 6px;
+              }
+
+              .resourceDescription {
+                font-size: 13px;
+                color: #666;
+                line-height: 1.4;
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .contentRight {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .chartContainer {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        min-height: 320px;
+      }
+    }
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+
+    .bottomLeft {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .dataOverviewCard {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .dataOverview {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+
+          .dataItem {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: #e9ecef;
+              transform: translateY(-1px);
+            }
+
+            .dataIcon {
+              width: 32px;
+              height: 32px;
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 8px;
+              font-size: 16px;
+              color: white;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+
+            .dataContent {
+      flex: 1;
+
+              .dataValue {
+        font-size: 18px;
+                font-weight: bold;
+        color: #1a1a1a;
+                line-height: 1;
+                margin-bottom: 2px;
+              }
+
+              .dataLabel {
+                font-size: 12px;
+                color: #666;
+              }
+            }
+          }
+        }
+      }
+
+      .courseSelectCard {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .courseList {
+          max-height: 460px;
+          overflow-y: auto;
+          scrollbar-width: none;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .courseItem {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+
+            &:hover {
+              background: #f0f0f0;
+            }
+
+            &.courseItemActive {
+              background: #e6f7ff;
+              border-color: #1890ff;
+            }
+
+            .courseIcon {
+              width: 32px;
+              height: 32px;
+              border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+              margin-right: 12px;
+              font-size: 16px;
+              color: white;
+              background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+              flex-shrink: 0;
+      }
+
+            .courseInfo {
+              flex: 1;
+              min-width: 0;
+
+              .courseName {
+                font-size: 16px;
+                color: #1a1a1a;
+                font-weight: 600;
+                margin-bottom: 4px;
+                line-height: 1.2;
+              }
+
+              .courseDescription {
+                font-size: 13px;
+                color: #666;
+                margin-bottom: 4px;
+                line-height: 1.4;
+              }
+
+              .courseTime {
+                font-size: 12px;
+                color: #999;
+                line-height: 1.2;
+              }
+            }
+          }
+        }
+      }
+
+      .timeRangeCard {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .settingItem {
+          margin-bottom: 16px;
+
+          label {
+            display: block;
+        font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+          }
+
+          .ant-select, .ant-picker {
+            width: 100%;
+          }
+        }
+      }
+
+      .analyzeButtonContainer {
+        .ant-btn {
+          border-radius: 8px;
+          font-weight: 600;
+          box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+          }
+        }
+      }
+    }
+
+    .bottomRight {
+      .analysisCard {
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 100%;
+
+        .loadingContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          text-align: center;
+
+          p {
+            margin-top: 16px;
+            color: #666;
+          }
+        }
+
+        .markdownContent {
+          padding: 16px;
+          max-height: 650px;
+          overflow-y: auto;
+          scrollbar-width: none;
+
+          h1, h2, h3, h4, h5, h6 {
+            color: #1a1a1a;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+          font-size: 24px;
+            border-bottom: 2px solid #1890ff;
+            padding-bottom: 8px;
+        }
+
+        h2 {
+          font-size: 20px;
+          color: #1890ff;
+        }
+
+        h3 {
+          font-size: 18px;
+            color: #52c41a;
+        }
+
+        p {
+            line-height: 1.6;
+          margin-bottom: 12px;
+            color: #333;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 12px;
+          
+          li {
+            margin-bottom: 8px;
+              color: #333;
+            }
+          }
+
+          strong {
+              color: #1890ff;
+            font-weight: 600;
+          }
+          
+          // 数学公式样式
+          .katex {
+            font-size: 1.1em;
+          }
+          
+          .katex-display {
+            margin: 1em 0;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+          }
+          
+          .katex-inline {
+            margin: 0 0.2em;
+        }
+
+          .katex-html {
+            overflow-x: auto;
+            overflow-y: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 1200px) {
+  .analyticsContainer {
+    .content {
+      grid-template-columns: 1fr;
+    }
+
+    .bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .analyticsContainer {
+    padding: 16px;
+
+    .dataPanel {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .content {
+      gap: 16px;
+        }
+
+    .bottom {
+      gap: 16px;
+    }
+  }
+} 

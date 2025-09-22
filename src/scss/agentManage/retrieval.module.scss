@@ -1,0 +1,410 @@
+// 科技感题目详情卡片样式
+.techDetailCard {
+  background: linear-gradient(120deg, #e3f0ff 0%, #fafdff 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(24,144,255,0.12);
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  position: relative;
+  font-family: 'Segoe UI', 'PingFang SC', 'Arial', sans-serif;
+}
+.techHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.techTitle {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+.techIcon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+.techMeta {
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 4px;
+}
+.techType {
+  background: #e6f7ff;
+  color: #1890ff;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-weight: 500;
+}
+.techSubject {
+  background: #f0f5ff;
+  color: #2b4acb;
+  border-radius: 6px;
+  padding: 2px 10px;
+}
+.iframe{
+  width: 96%;
+  aspect-ratio: 16/9;
+  background: #f0f0f0;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.techDifficulty {
+  background: #fffbe6;
+  color: #faad14;
+  border-radius: 6px;
+  background-color: #1890ff;
+  padding: 2px 10px;
+}
+.techDate {
+  background: #f6ffed;
+  color: #52c41a;
+  border-radius: 6px;
+  padding: 2px 10px;
+}
+.techBody {
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 15px 28px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(24,144,255,0.06);
+}
+.techQuestion {
+  font-size: 18px;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 18px;
+  border-left: 4px solid #1890ff;
+  padding-left: 12px;
+}
+.techOptions {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 16px;
+  ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+}
+.techOptionItem {
+  background: linear-gradient(90deg,#e6f7ff 0%,#fff 100%);
+  border-radius: 6px;
+  padding: 7px 16px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #1890ff;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(24,144,255,0.07);
+}
+.techOptionIndex {
+  font-weight: 700;
+  color: #2b4acb;
+  margin-right: 8px;
+}
+.techAnswer {
+  font-size: 17px;
+  color: #fa541c;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.techAnalysis {
+  font-size: 16px;
+  color: #555;
+  background: #f6ffed;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+}
+.techFooter {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+.techBtnSmall {
+  font-size: 14px;
+  border-radius: 50px;
+  padding: 0 18px;
+  height: 32px;
+  min-width: 60px;
+  color: #1890ff;
+  font-weight: 500;
+  box-shadow: 0 1px 4px #1890ff22;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background: linear-gradient(90deg,#2b4acb 0%,#1890ff 100%);
+    color: #fff;
+  }
+}
+.liked {
+  background: #fff0f0 !important;
+  color: #ff4d4f !important;
+  border: 1px solid #ff4d4f !important;
+  box-shadow: 0 1px 6px #ff4d4f22;
+}
+@import '../variables';
+
+  .gradeTag{
+    cursor: pointer;
+    font-size: 14px;
+    padding: 3px 10px;
+    border-radius: 14px;
+    margin-bottom: 4;
+    min-width: 36;
+    text-align: center;
+    line-height: 20px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+.retrievalContainer {
+  padding: 24px;
+  background-color: #f0f2f5;
+  border-radius: 20px;
+  min-height: 100vh;
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    
+    h{
+      font-size: 36px;
+      background: linear-gradient(120deg, #2b4acb, #1890ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+  
+  .searchCard {
+    margin-bottom: 24px;
+
+    .searchHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .searchInput {
+        width: 550px;
+        :global(.ant-input-search) {
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          height: 60px;
+          &:hover, &:focus {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
+
+      .uploadButton {
+        margin-left: 16px;
+        border-radius: 8px;
+        height: 40px;
+        padding: 0 20px;
+      }
+    }
+
+    .filterForm {
+      .filterRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 16px;
+
+        :global(.ant-form-item) {
+          flex: 1;
+          min-width: 200px;
+          margin-bottom: 0;
+        }
+
+        .filterButtons {
+          display: flex;
+          align-items: flex-end;
+          margin-left: auto;
+        }
+        
+        .typeSelect {
+          :global(.ant-select-selector) {
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  .tableCard {
+    .tableHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .selectedCount {
+        margin-left: 16px;
+        color: #666;
+      }
+    }
+
+    :global {
+      .ant-table-thead > tr > th {
+        background-color: #fafafa;
+      }
+
+      .ant-table-tbody > tr:hover > td {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+.tag{margin-bottom: 10px;}
+.top{
+  background:linear-gradient(90deg,#e3f0ff 0%,#fafdff 100%) ;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(24,144,255,0.08) ;
+  padding: 32px;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  .addBut{
+    background-color: #1890ff;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+  }
+}
+.result{
+  .itemCard{
+    background-color: #fff;
+    padding: 15px;
+    transition: box-shadow 0.2s, border 0.2s;
+    border: 2px solid transparent;
+    img{
+      width: 100%;
+      height: 100px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+
+    }
+  }
+  .active{
+    border: 2px solid #1890ff;
+    box-shadow: 0 4px 16px #1890ff33 !important;
+  }
+}
+
+// 类型选择器样式
+.typeOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  
+  .typeInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+    .typeLabel {
+      font-weight: 500;
+      color: #262626;
+    }
+    
+    .typeDescription {
+      font-size: 12px;
+      color: #8c8c8c;
+    }
+  }
+}
+
+// 学科选择器样式
+.subjectOption {
+  padding: 4px 0;
+  
+  :global(.ant-tag) {
+    border-radius: 4px;
+    font-weight: 500;
+  }
+}
+
+// 年级选择器样式
+.gradeOption {
+  padding: 4px 0;
+  
+  :global(.ant-tag) {
+    border-radius: 4px;
+    font-weight: 500;
+  }
+}
+
+.previewContent {
+  .previewHeader {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+
+  .previewInfo {
+    margin-bottom: 24px;
+
+    p {
+      margin-bottom: 8px;
+      color: #666;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .previewActions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+// 搜索建议样式优化
+:global {
+  .ant-select-dropdown {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    
+    .ant-select-item {
+      padding: 8px 12px;
+      border-radius: 4px;
+      
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}

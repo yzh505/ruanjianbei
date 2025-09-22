@@ -1,0 +1,321 @@
+.profile{
+  width: 100vw;
+  height: 100vh;
+  background: #f0f2f5;
+  position: relative;
+}
+
+.profileContainer {
+  display: flex;
+  gap: 24px;
+  padding: 14px;
+  height: 90vh;
+  .leftSection {
+    flex: 0 0 360px;
+    .profileCard {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      height: 100%;
+
+      .avatarSection {
+        padding: 32px;
+        text-align: center;
+        border-radius: 12px 12px 0 0;
+        background: linear-gradient(135deg, #389DFA 0%, #2980b9 100%);
+        color: white;
+
+        .avatarWrapper {
+          position: relative;
+          width: 120px;
+          height: 120px;
+          margin: 0 auto 16px;
+          border-radius: 60px;
+          overflow: hidden;
+          cursor: pointer;
+
+          &:hover {
+            .avatarOverlay {
+              opacity: 1;
+            }
+          }
+
+          .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            object-fit: cover;
+          }
+
+          .avatarOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 60px;
+            color: white;
+
+            span {
+              font-size: 12px;
+              margin-top: 8px;
+            }
+          }
+
+          .avatarUpload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+
+            :global {
+              .ant-upload {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+
+        .userRole {
+          font-size: 14px;
+          opacity: 0.9;
+        }
+      }
+
+      .infoSection {
+        padding: 24px;
+        min-height: 20%;
+        .infoHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 24px;
+
+          h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+          }
+        }
+
+        .infoItem {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+          color: #666;
+
+          .label {
+            color: #999;
+            min-width: 60px;
+          }
+        }
+      }
+
+      .editForm {
+        padding: 24px;
+
+        .infoHeader {
+          margin-bottom: 24px;
+
+          h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+          }
+        }
+
+        .formGroup {
+          margin-bottom: 16px;
+
+          label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+          }
+
+          input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+
+            &:focus {
+              outline: none;
+              border-color: #389DFA;
+            }
+          }
+        }
+
+        .buttonGroup {
+          display: flex;
+          justify-content: flex-end;
+          gap: 12px;
+          margin-top: 24px;
+        }
+      }
+
+      .performanceSection {
+        padding: 24px;
+        border-top: 1px solid #f0f0f0;
+
+        h3 {
+          margin: 0 0 20px;
+          font-size: 16px;
+          color: #333;
+        }
+
+        .progressItem {
+          margin-bottom: 20px;
+
+          .progressHeader {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .rightSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+
+    .statsGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+
+      .statsCard {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+        }
+
+        .statsIcon {
+          width: 48px;
+          height: 48px;
+          border-radius: 24px;
+          background: rgba(56, 157, 250, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #389DFA;
+        }
+
+        .statsInfo {
+          .statsValue {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+          }
+
+          .statsLabel {
+            font-size: 14px;
+            color: #666;
+          }
+        }
+      }
+    }
+
+    .chartsSection {
+      display: flex;
+      gap: 24px;
+      width: 100%;
+      .chartCard {
+        width: 46%;
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        
+        &:hover {
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
+
+    .activitySection {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      h3 {
+        margin: 0 0 24px;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .timeline {
+        .timelineItem {
+          display: flex;
+          gap: 16px;
+          padding-bottom: 24px;
+          position: relative;
+
+          &:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: #eee;
+          }
+
+          .timelineDot {
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+            background: #389DFA;
+            margin-top: 6px;
+          }
+
+          .timelineContent {
+            flex: 1;
+
+            .timelineTitle {
+              font-size: 14px;
+              color: #333;
+              margin-bottom: 4px;
+            }
+
+            .timelineTime {
+              font-size: 12px;
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
+}

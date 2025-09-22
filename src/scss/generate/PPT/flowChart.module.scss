@@ -1,0 +1,872 @@
+@import '../../_variables.scss';
+
+.flowChartContainer {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  padding: 16px;
+
+  .title {
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, $color-primary, $color-success);
+      border-radius: 3px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+      background: linear-gradient(90deg, $color-primary, $color-success);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+    }
+  }
+
+  .divider {
+    margin: 20px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+  }
+}
+
+// 数据面板样式
+.dataPanel {
+  margin-bottom: 24px;
+  :global(.ant-card) {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .statCard {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    min-height: 140px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    .cardContent {
+      display: flex;
+      height: 100%;
+      
+      .statSection {
+        flex: 0 0 30%;
+        padding: 15px;
+        border-radius: 20px;
+      }
+
+      .cardDesc {
+        flex: 0 0 50%;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        
+        .descIcon {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 24px;
+          height: 24px;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          
+          :global(.anticon) {
+            font-size: 14px;
+          }
+        }
+        
+        p {
+          margin: 16px 0 8px;
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.65);
+          line-height: 1.5;
+          text-align: center;
+        }
+        
+        .trend, .typeList, .status {
+          text-align: center;
+          
+          small {
+            display: inline-block;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.45);
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.02);
+          }
+        }
+
+        .status small {
+          color: #fa541c;
+        }
+      }
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(45deg) translateY(0); }
+      100% { transform: rotate(45deg) translateY(100%); }
+    }
+  }
+
+  :global(.ant-statistic-title) {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  :global(.ant-statistic-content) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0;
+    
+    :global(.ant-statistic-content-value) {
+      font-size: 24px;
+      font-weight: 600;
+      background: linear-gradient(90deg, currentColor, currentColor);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    :global(.ant-statistic-content-suffix) {
+      font-size: 14px;
+      margin-left: 4px;
+    }
+  }
+}
+
+// 历史时间轴样式
+.historyTimeline {
+  flex: 1;
+  min-width: 0;
+  
+  :global(.ant-card) {
+    height: 100%;
+  }
+
+  :global(.ant-timeline) {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    :global(.ant-timeline-item) {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      height: 110px;
+      
+      :global(.ant-timeline-item-label) {
+        position: absolute;
+        left: 0;
+        width: 20%;
+        text-align: right;
+        padding-right: 16px;
+        color: #666;
+        font-size: 13px;
+      }
+
+      :global(.ant-timeline-item-tail) {
+        left: 20%;
+        border-left: 2px solid #e8e8e8;
+      }
+
+      :global(.ant-timeline-item-head) {
+        left: 20%;
+        margin-left: -4px;
+      }
+
+      :global(.ant-timeline-item-content) {
+        position: absolute;
+        left: 22%;
+        width: 80%;
+        margin-left: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .timelineContent {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    
+    &:hover {
+      transform: translateX(4px);
+      background: #f8f9fa;
+      border-color: rgba(24, 144, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .timelineHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      
+      .timelineType {
+        color: $color-primary;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        
+        :global(.anticon) {
+          font-size: 16px;
+        }
+      }
+      
+      .timelineActions {
+        display: flex;
+        gap: 4px;
+        
+        :global(.ant-btn) {
+          padding: 4px 8px;
+          height: 28px;
+          font-size: 13px;
+          
+          &:hover {
+            background: rgba(0, 0, 0, 0.04);
+            
+            &.ant-btn-dangerous {
+              color: #ff4d4f;
+              background: rgba(255, 77, 79, 0.1);
+            }
+          }
+
+          :global(.anticon) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+}
+
+// 编辑器工具栏样式
+.editorToolbar {
+  margin-bottom: 16px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  gap: 8px;
+  
+  :global(.ant-btn-group) {
+    display: flex;
+    gap: 2px;
+    
+    .ant-btn {
+      border-radius: 4px;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      
+      &:hover {
+        color: $color-primary;
+        border-color: $color-primary;
+        background: #e6f7ff;
+      }
+      
+      :global(.anticon) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// 编辑弹窗标题样式
+.modalTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $color-primary;
+  font-weight: 500;
+  
+  :global(.anticon) {
+    font-size: 18px;
+  }
+}
+
+// 生成部分样式
+.generateSection {
+  margin-bottom: 24px;
+  
+  :global(.ant-card) {
+    border-radius: 12px;
+  }
+
+  .generateContent {
+    display: flex;
+    gap: 24px;
+    
+    .inputSection {
+      width: 35%;
+      background: white;
+      border-radius: 12px;
+      padding:0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f1f1f;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+          content: '';
+          width: 4px;
+          height: 16px;
+          background: linear-gradient(to bottom, #1890ff, #096dd9);
+          border-radius: 2px;
+        }
+      }
+
+      .typeSelector {
+        .typeCards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 12px;
+
+          .typeCard {
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fafafa;
+
+            &:hover {
+              border-color: #1890ff;
+              background: #f0f7ff;
+              transform: translateY(-2px);
+            }
+
+            &.active {
+              background: #e6f7ff;
+              border-color: #1890ff;
+              box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+
+              .typeIcon {
+                background: #1890ff;
+                color: white;
+              }
+
+              .typeName {
+                color: #1890ff;
+              }
+            }
+
+            .typeIcon {
+              width: 36px;
+              height: 36px;
+              border-radius: 8px;
+              background: #f0f0f0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 20px;
+              color: #666;
+              transition: all 0.3s ease;
+            }
+
+            .typeInfo {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+
+              .typeName {
+                font-size: 14px;
+                font-weight: 500;
+                color: #333;
+              }
+
+              .typeDesc {
+                font-size: 12px;
+                color: #666;
+              }
+            }
+          }
+        }
+      }
+
+      .inputArea {
+        .inputWrapper {
+          background: #fafafa;
+          border-radius: 8px;
+          padding: 16px;
+
+          .contentInput {
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+            resize: none;
+            font-size: 14px;
+
+            &:hover {
+              border-color: #1890ff;
+            }
+
+            &:focus {
+              border-color: #1890ff;
+              box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+            }
+          }
+
+          .inputTips {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .tipItem {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              color: #666;
+              font-size: 13px;
+
+              :global(.anticon) {
+                color: #1890ff;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+
+      .generateActions {
+        display: flex;
+        gap: 12px;
+        margin-top: auto;
+
+        button {
+          flex: 1;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          border-radius: 8px;
+          font-size: 14px;
+          transition: all 0.3s ease;
+
+          &:first-child {
+            &:hover {
+              color: #ff4d4f;
+              border-color: #ff4d4f;
+            }
+          }
+
+          &:last-child {
+            background: linear-gradient(90deg, #1890ff, #096dd9);
+            border: none;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+            }
+
+            &:active {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+    }
+    
+    .previewSection {
+      flex: 1;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      max-height: 720px;
+      .previewHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid #f0f0f0;
+        background: linear-gradient(to right, #f8f9fa, #ffffff);
+
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+          color: #1f1f1f;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(to bottom, #1890ff, #096dd9);
+            border-radius: 2px;
+          }
+        }
+
+        .previewActions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-left: auto;
+          .ant-btn {
+            border-radius: 6px;
+            transition: background 0.2s;
+            &:hover {
+              background: #f0f5ff;
+            }
+          }
+        }
+      }
+
+      .previewContent {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(120deg, #f7f8fe 80%, #e0e7fe 100%);
+        scrollbar-width: none;
+        overflow-y: auto;
+      }
+
+      .emptyPreview {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: #999;
+        padding: 24px;
+        background: linear-gradient(120deg, #f7f8fe 80%, #e0e7fe 100%);
+
+        :global(.anticon) {
+          font-size: 48px;
+          color: #d9d9d9;
+        }
+
+        span {
+          &:first-of-type {
+            font-size: 16px;
+          }
+
+          &.emptyTip {
+            font-size: 14px;
+            color: #bfbfbf;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 编辑弹窗样式
+.editModalContent {
+  display: flex;
+  gap: 24px;
+  height: 600px;
+  
+  .codeEditor {
+    width: 45%;
+    
+    :global(.ant-input) {
+      height: 100%;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      border-radius: 8px;
+    }
+  }
+  
+  .livePreview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    .previewToolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      
+      :global(.ant-btn) {
+        border-radius: 4px;
+      }
+      
+      :global(.ant-slider) {
+        margin: 0 8px;
+      }
+    }
+    .previewContainer{
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    .previewContent {
+      flex: 1;
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      overflow-y: auto;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      
+      .emptyPreview {
+        color: #999;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// 主要内容布局
+.mainContent {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+// 功能演示模块样式
+.demoSection {
+  width: 40%;
+  min-width: 400px;
+  
+  :global(.ant-card) {
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    
+    :global(.ant-card-head) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0 16px;
+    }
+  }
+}
+
+.demoTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-primary;
+  }
+  
+  .demoControls {
+    display: flex;
+    gap: 4px;
+    
+    :global(.ant-btn) {
+      padding: 4px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        color: $color-primary;
+        background: rgba(24, 144, 255, 0.1);
+      }
+      
+      :global(.anticon) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.demoContent {
+  padding: 16px;
+  
+  .demoChart {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+    max-height: 200px;
+    min-height: 200px;
+    display: flex;
+    scrollbar-width: none;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+    
+    svg {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+  
+  .demoInfo {
+    text-align: center;
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+    
+    .demoActions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      
+      :global(.ant-btn) {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 16px;
+        height: 32px;
+        border-radius: 6px;
+        
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+// 响应式布局
+@media (max-width: 1200px) {
+  .mainContent {
+    flex-direction: column;
+    
+    .demoSection {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+  
+  .generateContent {
+    flex-direction: column;
+    
+    .inputSection {
+      width: 100% !important;
+    }
+  }
+  
+  .editModalContent {
+    flex-direction: column;
+    height: auto;
+    
+    .codeEditor {
+      width: 100%;
+      height: 300px;
+    }
+    
+    .livePreview {
+      height: 400px;
+    }
+  }
+}
+/* 容器样式 */
+.markmapContainer {
+    width: 100%;
+    min-height: 400px;
+    border-radius: 8px;
+    background: #f8faff;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 1px 8px rgba(24,144,255,0.06);
+}
+
+/* 思维导图主题 */
+.markmap {
+    --markmap-max-width: 9999px;
+    --markmap-a-color: #0097e6;
+    --markmap-link-stroke: #0097e6;  /* 新增连线颜色 */
+    font: 300 16px/20px sans-serif;
+}
+
+/* 连线样式 */
+.markmap-link {
+    stroke: var(--markmap-link-stroke);
+    stroke-width: 1.5px;
+    fill: none;
+}

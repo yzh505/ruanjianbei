@@ -1,0 +1,8 @@
+@import './com.module.scss';
+.flowChart{
+    display: flex;
+    justify-content: center;
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}

@@ -1,0 +1,141 @@
+@import './variables';
+
+.manage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: #f0f2f5;
+  overflow: hidden;
+  position: relative;
+
+  :global {
+    .ant-layout {
+      height: 100%;
+      background: #f0f2f5;
+    }
+
+    .ant-layout-sider {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      z-index: 100;
+      height: 100vh;
+
+      &.ant-layout-sider-collapsed {
+        .ant-layout-sider-children {
+          overflow: visible;
+        }
+      }
+    }
+  }
+
+  .sider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+
+    &.collapsed {
+      width: 64px;
+    }
+
+    :global(.sideContainer) {
+      background: transparent !important;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  .contentWrapper {
+    flex: 1;
+    margin-left: 240px;
+    transition: all 0.2s ease-in-out;
+
+    &.contentWrapperCollapsed {
+      margin-left: 68px;
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: $color-head-bg;
+  }
+
+  .contentLayout {
+    flex: 1;
+    background: #f0f2f5;
+    overflow: hidden;
+  }
+
+  .mainContent {
+    flex: 1;
+    padding: 16px;
+    overflow: auto;
+    position: relative;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+}
+
+.avatarBtnGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 0 0;
+  align-items: center;
+}
+.avatarStartBtn, .avatarStopBtn {
+  width: 120px;
+  padding: 8px 0;
+  border-radius: 6px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.avatarStartBtn {
+  background: linear-gradient(90deg, #52c41a 0%, #1890ff 100%);
+  color: #fff;
+  margin-bottom: 4px;
+}
+.avatarStartBtn:hover {
+  background: linear-gradient(90deg, #1890ff 0%, #52c41a 100%);
+}
+.avatarStopBtn {
+  background: #fff;
+  color: #f5222d;
+  border: 1px solid #f5222d;
+}
+.avatarStopBtn:hover {
+  background: #f5222d;
+  color: #fff;
+}

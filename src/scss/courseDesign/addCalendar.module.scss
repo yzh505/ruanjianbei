@@ -1,0 +1,1516 @@
+.calendarContainer {
+  padding: 24px;
+  background: #f5f7fa;
+  min-height: 100vh;
+
+  .head {
+    text-align: center;
+    margin-bottom: 32px;
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      background: linear-gradient(120deg, #1890ff, #722ed1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  .topContent {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .dataPanel {
+      flex: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .calendarPanel {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      padding-bottom: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      max-width: 500px;
+      
+      .calendarHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        
+        .weekTitle {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          
+          .weekIcon {
+            color: #1890ff;
+            font-size: 16px;
+          }
+          
+          span:first-of-type {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+          }
+          
+          .weekRange {
+            font-size: 12px;
+            color: #666;
+            font-weight: 400;
+          }
+        }
+        
+        .calendarActions {
+          display: flex;
+          gap: 8px;
+          
+          .weeklyCalendarButton {
+            background: #52c41a;
+            border-color: #52c41a;
+            font-size: 12px;
+            height: 28px;
+            
+            &:hover {
+              background: #73d13d;
+              border-color: #73d13d;
+            }
+          }
+          
+          .addEventButton {
+            background: #1890ff;
+            border-color: #1890ff;
+            font-size: 12px;
+            height: 28px;
+            
+            &:hover {
+              background: #40a9ff;
+              border-color: #40a9ff;
+            }
+          }
+        }
+      }
+      
+      .weeklyCalendar {
+        margin-bottom: 16px;
+        
+        .weekDays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 4px;
+          margin-bottom: 8px;
+          
+          .weekDay {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+            padding: 6px 2px;
+          }
+        }
+        
+        .weeklyDays {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 4px;
+          
+          .weeklyDay {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            min-height: 60px;
+            border: 1px solid #f0f0f0;
+            padding: 4px;
+            
+            &:hover {
+              background: #f0f5ff;
+              border-color: #1890ff;
+            }
+            
+            &.today {
+              background: #1890ff;
+              color: white;
+              border-color: #1890ff;
+              
+              .dayNumber {
+                color: white;
+              }
+              
+              .eventCount {
+                background: rgba(255, 255, 255, 0.9);
+                color: #1890ff;
+              }
+              
+              .eventPreview {
+                color: rgba(255, 255, 255, 0.9);
+              }
+            }
+            
+            .dayNumber {
+              font-size: 14px;
+              font-weight: 600;
+              margin-bottom: 2px;
+            }
+            
+            .dayEvents {
+              margin: 2px 0;
+              
+              .eventCount {
+                background: #ff4d4f;
+                color: white;
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+              }
+              
+              .noEvent {
+                width: 16px;
+                height: 16px;
+              }
+            }
+            
+            .eventPreview {
+              font-size: 10px;
+              color: #666;
+              text-align: center;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+      
+      .todayEvents {
+        border-top: 1px solid #f0f0f0;
+        padding-top: 16px;
+        
+        .todayTitle {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+          
+          span:first-child {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+          }
+          
+          .todayCount {
+            font-size: 12px;
+            color: #666;
+            background: #f0f5ff;
+            padding: 2px 8px;
+            border-radius: 10px;
+          }
+        }
+        
+        .eventsList {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          max-height: 120px;
+          overflow-y: auto;
+          
+          .todayEvent {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #1890ff;
+            
+            .eventTime {
+              font-size: 11px;
+              color: #666;
+              font-weight: 500;
+              min-width: 35px;
+            }
+            
+            .eventTitle {
+              font-size: 12px;
+              color: #1a1a1a;
+              flex: 1;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+          
+          .noTodayEvents {
+            text-align: center;
+            color: #ccc;
+            font-size: 12px;
+            padding: 16px;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+
+  .dataPanel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    .dataCard {
+      background: white;
+      padding: 24px 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      height: auto;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1;
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+
+        &::before {
+          opacity: 1;
+        }
+
+        .cardIcon {
+          transform: scale(1.1) rotate(5deg);
+        }
+      }
+
+      .cardIcon {
+        width: 20%;
+        margin: 0 10px 0 0;
+        height: 56px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+        flex-shrink: 0;
+      }
+
+      .cardContent {
+        width: 80%;
+        .value {
+          font-size: 32px;
+          font-weight: 600;
+          line-height: 1.2;
+          margin-bottom: 4px;
+        }
+
+        .label {
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.45);
+          margin-bottom: 8px;
+        }
+
+        .description {
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.65);
+          line-height: 1.4;
+          margin-bottom: 12px;
+          padding: 0 2px;
+        }
+
+        .progressInfo {
+          margin-top: 8px;
+
+          .progressBar {
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 6px;
+
+            .progressFill {
+              height: 100%;
+              background: linear-gradient(90deg, rgba(24, 144, 255, 0.8), rgba(24, 144, 255, 1));
+              border-radius: 2px;
+              transition: width 0.3s ease;
+            }
+          }
+
+          .progressText {
+            font-size: 11px;
+            color: rgba(0, 0, 0, 0.55);
+            font-weight: 500;
+          }
+        }
+      }
+
+      .cardTrend {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 30%;
+
+        .trendValue {
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          .anticon {
+            font-size: 12px;
+          }
+        }
+
+        .trendLabel {
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.45);
+          margin-top: 4px;
+          margin-bottom: 8px;
+        }
+
+        .extraInfo {
+          margin-top: auto;
+          
+          .infoItem {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            text-align: right;
+            
+            .infoLabel {
+              font-size: 10px;
+              color: rgba(0, 0, 0, 0.45);
+            }
+            
+            .infoValue {
+              font-size: 12px;
+              font-weight: 600;
+              color: rgba(0, 0, 0, 0.75);
+            }
+          }
+        }
+      }
+
+      &.total {
+        background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+        
+        &::before {
+          background: linear-gradient(45deg, rgba(24, 144, 255, 0.1), rgba(24, 144, 255, 0.05));
+        }
+
+        .cardIcon {
+          background: rgba(24, 144, 255, 0.1);
+          color: #1890ff;
+        }
+
+        .value { color: #1890ff; }
+        .trendValue { color: #52c41a; }
+        
+        .progressInfo .progressBar .progressFill {
+          background: linear-gradient(90deg, rgba(24, 144, 255, 0.8), rgba(24, 144, 255, 1));
+        }
+      }
+
+      &.today {
+        background: linear-gradient(135deg, #fff7e6 0%, #ffffff 100%);
+        
+        &::before {
+          background: linear-gradient(45deg, rgba(250, 140, 22, 0.1), rgba(250, 140, 22, 0.05));
+        }
+
+        .cardIcon {
+          background: rgba(250, 140, 22, 0.1);
+          color: #fa8c16;
+        }
+
+        .value { color: #fa8c16; }
+        .trendValue { color: #52c41a; }
+        
+        .progressInfo .progressBar .progressFill {
+          background: linear-gradient(90deg, rgba(250, 140, 22, 0.8), rgba(250, 140, 22, 1));
+        }
+      }
+
+      &.upcoming {
+        background: linear-gradient(135deg, #f6ffed 0%, #ffffff 100%);
+        
+        &::before {
+          background: linear-gradient(45deg, rgba(82, 196, 26, 0.1), rgba(82, 196, 26, 0.05));
+        }
+
+        .cardIcon {
+          background: rgba(82, 196, 26, 0.1);
+          color: #52c41a;
+        }
+
+        .value { color: #52c41a; }
+        .trendValue { color: #52c41a; }
+        
+        .progressInfo .progressBar .progressFill {
+          background: linear-gradient(90deg, rgba(82, 196, 26, 0.8), rgba(82, 196, 26, 1));
+        }
+      }
+
+      &.completed {
+        background: linear-gradient(135deg, #f9f0ff 0%, #ffffff 100%);
+        
+        &::before {
+          background: linear-gradient(45deg, rgba(114, 46, 209, 0.1), rgba(114, 46, 209, 0.05));
+        }
+
+        .cardIcon {
+          background: rgba(114, 46, 209, 0.1);
+          color: #722ed1;
+        }
+
+        .value { color: #722ed1; }
+        .trendValue { color: #52c41a; }
+        
+        .progressInfo .progressBar .progressFill {
+          background: linear-gradient(90deg, rgba(114, 46, 209, 0.8), rgba(114, 46, 209, 1));
+        }
+      }
+    }
+  }
+  .historySection {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(24,144,255,0.06);
+    padding: 32px 24px 24px 24px;
+    align-items: flex-start;
+  }
+    
+  .historyPanel {
+    .historyTitle {
+      font-size: 18px;
+      font-weight: 700;
+      color: #722ed1;
+      letter-spacing: 1px;
+    }
+    .historyList {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5%;
+      margin: 0;
+      .historyItem {
+        width: 48%;
+        height: 150px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(114,46,209,0.04);
+        margin-bottom: 18px;
+        padding: 18px 22px 14px 22px;
+        border: 1.5px solid #e6f7ff;
+        transition: box-shadow 0.18s, transform 0.18s;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        
+        &:hover {
+          box-shadow: 0 8px 32px rgba(114,46,209,0.13);
+          transform: translateY(-2px) scale(1.01);
+          border-color: #b37feb;
+        }
+        .historyHeader {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 6px;
+          .historyName {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1890ff;
+            min-width: 120px;
+            letter-spacing: 0.5px;
+          }
+          .historyTags {
+            display: flex;
+            gap: 8px;
+            .tag {
+              background: linear-gradient(90deg, #e6f7ff 60%, #bae7ff 100%);
+              color: #1890ff;
+              font-size: 12px;
+              border-radius: 6px;
+              padding: 2px 10px;
+              font-weight: 500;
+              margin-left: 0;
+              box-shadow: 0 1px 4px rgba(24,144,255,0.08);
+            }
+          }
+        }
+        .historyDesc {
+          color: #666;
+          font-size: 14px;
+          margin-bottom: 8px;
+          margin-left: 2px;
+        }
+        .historyMeta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 18px;
+          font-size: 13px;
+          color: #888;
+          margin-top: 2px;
+          .metaItem {
+            background: #f5f7fa;
+            border-radius: 4px;
+            padding: 2px 10px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    .historyPagination {
+      text-align: right;
+      :global {
+        .ant-pagination-item-active {
+          background: #f0f5ff;
+          border-color: #1890ff;
+        }
+        .ant-pagination-item {
+          border-radius: 6px;
+        }
+        .ant-pagination-prev .ant-pagination-item-link,
+        .ant-pagination-next .ant-pagination-item-link {
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+  
+    .mainContent {
+      display: flex;
+      gap: 24px;
+  
+      .leftSection {
+        flex: 2;
+        background: white;
+        border-radius: 12px;
+        padding:15px 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+  
+      .rightSection {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+  
+        .remindersCard {
+          background: white;
+          border-radius: 12px;
+          padding: 24px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+          .cardTitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+  
+            .icon {
+              color: #1890ff;
+            }
+          }
+  
+          .reminderList {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+  
+            .reminderItem {
+              padding: 16px;
+              border-radius: 8px;
+              background: #f6f9fe;
+              border-left: 4px solid #1890ff;
+              transition: all 0.3s;
+  
+              &:hover {
+                transform: translateX(4px);
+                background: #e6f7ff;
+              }
+  
+              .time {
+                font-size: 12px;
+                color: #666;
+                margin-bottom: 4px;
+              }
+  
+              .content {
+                color: #1a1a1a;
+                margin-bottom: 8px;
+              }
+  
+              .actions {
+                display: flex;
+                gap: 12px;
+  
+                .actionLink {
+                  font-size: 13px;
+                  color: #1890ff;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+  
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+  
+              &.important {
+                border-left-color: #ff4d4f;
+                background: #fff1f0;
+  
+                &:hover {
+                  background: #ffccc7;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .calendarPanel{
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+
+  }
+  .calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    .monthSelector {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      .currentMonth {
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .navigationButton {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+        padding: 8px;
+        border-radius: 50%;
+        transition: all 0.3s;
+        &:hover {
+          background: #f0f0f0;
+          color: #1890ff;
+        }
+      }
+    }
+    .addEventButton {
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: #1890ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      &:hover {
+        background: #40a9ff;
+      }
+    }
+  }
+  .calendar {
+    .weekDays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-weight: 500;
+      color: #666;
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      .day {
+        aspect-ratio: 1;
+        padding: 8px;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        min-height: 100px;
+        height: auto;
+        &:hover {
+          border-color: #1890ff;
+          background: #f6f9fe;
+        }
+        &.today {
+          background: #e6f7ff;
+          border-color: #1890ff;
+        }
+        &.hasEvent {
+          position: relative;
+        }
+        .date {
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+        .eventsList {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          font-size: 12px;
+          .eventPreview {
+            padding: 2px 4px;
+            border-radius: 4px;
+            background: #f0f0f0;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            &.important {
+              background: #fff1f0;
+              color: #ff4d4f;
+            }
+          }
+          .moreEvents {
+            font-size: 11px;
+            color: #1890ff;
+            text-align: center;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+
+.dayModal {
+  :global {
+    .ant-modal-body {
+      padding: 24px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+  }
+
+  .eventList {
+    .eventTitle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+
+      span:first-child {
+        color: #1890ff;
+        font-weight: 500;
+      }
+
+      span:nth-child(2) {
+        flex: 1;
+      }
+    }
+
+    .eventDescription {
+      color: #666;
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .eventLink {
+        color: #1890ff;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.eventModal {
+  :global {
+    .ant-modal-content {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .ant-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 0;
+
+      .ant-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+    }
+
+    .ant-modal-body {
+      padding: 24px;
+    }
+
+    .ant-modal-footer {
+      border-top: 1px solid #f0f0f0;
+      padding: 16px 24px;
+    }
+  }
+
+  .form {
+    .formGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .formItem {
+      margin-bottom: 16px;
+
+      :global {
+        .ant-form-item-label {
+          padding-bottom: 8px;
+        }
+
+        .ant-input,
+        .ant-picker,
+        .ant-select-selector {
+          border-radius: 8px;
+          border: 1px solid #d9d9d9;
+          transition: all 0.3s;
+
+          &:hover,
+          &:focus {
+            border-color: #1890ff;
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+          }
+        }
+
+        .ant-select-selector {
+          height: 40px !important;
+          padding: 4px 11px !important;
+
+          .ant-select-selection-item {
+            line-height: 30px !important;
+          }
+        }
+
+        .ant-picker {
+          height: 40px;
+        }
+
+        .ant-input {
+          height: 40px;
+          padding: 8px 12px;
+
+          &::placeholder {
+            color: #bfbfbf;
+          }
+        }
+      }
+    }
+
+    .formLabel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #1a1a1a;
+      font-weight: 500;
+
+      .labelIcon {
+        color: #1890ff;
+        font-size: 16px;
+      }
+    }
+
+    .textarea {
+      border-radius: 8px !important;
+      height: auto !important;
+      resize: vertical;
+      min-height: 120px;
+      padding: 12px !important;
+      line-height: 1.5;
+      font-size: 14px;
+
+      &:hover,
+      &:focus {
+        border-color: #1890ff !important;
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+      }
+    }
+
+    :global {
+      .ant-tag {
+        margin-right: 0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// 本周日历弹窗样式
+.weeklyModal {
+  :global {
+    .ant-modal-content {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    
+    .ant-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid #f0f0f0;
+      
+      .ant-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+    
+    .ant-modal-body {
+      padding: 24px;
+    }
+  }
+  
+  .weeklyModalTitle {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .weeklyCalendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+    
+    .weeklyDay {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 300px;
+      transition: all 0.3s;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+      
+      &.today {
+        background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+        border: 2px solid #1890ff;
+        
+        .weeklyDayHeader {
+          .weeklyDayName {
+            color: #1890ff;
+          }
+          
+          .weeklyDayDate {
+            background: #1890ff;
+            color: white;
+          }
+        }
+      }
+      
+      .weeklyDayHeader {
+        text-align: center;
+        margin-bottom: 16px;
+        
+        .weeklyDayName {
+          font-size: 14px;
+          font-weight: 600;
+          color: #666;
+          margin-bottom: 8px;
+        }
+        
+        .weeklyDayDate {
+          font-size: 16px;
+          font-weight: 700;
+          background: #f0f0f0;
+          padding: 6px 12px;
+          border-radius: 20px;
+          color: #1a1a1a;
+          display: inline-block;
+        }
+      }
+      
+      .weeklyDayEvents {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        .weeklyEvent {
+          background: white;
+          border-radius: 8px;
+          padding: 12px;
+          border-left: 4px solid #1890ff;
+          transition: all 0.3s;
+          position: relative;
+          
+          &:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            
+            .eventActions {
+              opacity: 1;
+            }
+          }
+          
+          &.important {
+            border-left-color: #ff4d4f;
+            background: #fff1f0;
+          }
+          
+          .eventTime {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+            font-weight: 500;
+          }
+          
+          .eventTitle {
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: 500;
+            margin-bottom: 8px;
+          }
+          
+          .eventActions {
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            
+            .actionIcon {
+              cursor: pointer;
+              color: #666;
+              transition: color 0.3s;
+              
+              &:hover {
+                color: #1890ff;
+              }
+            }
+          }
+        }
+        
+        .noEvents {
+          text-align: center;
+          color: #ccc;
+          font-size: 14px;
+          padding: 20px;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
+// 课程详情弹窗样式
+.courseDetailModal {
+  :global {
+    .ant-modal-content {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    
+    .ant-modal-header {
+      border-bottom: 1px solid #f0f0f0;
+      
+      .ant-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .courseDetailModalTitle {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #e0f7fa 0%, #f5f7ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(24,144,255,0.12);
+    padding: 12px 24px;
+    color: #1890ff;
+    font-size: 22px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+}
+
+
+
+.courseDetailContent {
+  width: 98%;
+  background: rgba(255,255,255,0.05);
+  margin-left: -10px;
+  .courseBasicInfo {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    
+    .courseInfoLeft {
+      flex: 0 0 65%;
+      
+      .courseHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        
+        .courseName {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 24px;
+          font-weight: 700;
+          color: #1a1a1a;
+          
+          .courseIcon {
+            color: #1890ff;
+            font-size: 28px;
+          }
+        }
+        
+        .courseStatus {
+          :global {
+            .ant-tag {
+              font-size: 14px;
+              padding: 6px 16px;
+              border-radius: 20px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+      
+      .courseMeta {
+        .metaRow {
+          display: flex;
+          gap: 32px;
+          margin-bottom: 16px;
+          
+          .metaItem {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            
+            .metaIcon {
+              color: #1890ff;
+              font-size: 16px;
+            }
+            
+            .metaLabel {
+              color: #666;
+              font-size: 14px;
+              min-width: 80px;
+            }
+            
+            .metaValue {
+              color: #494949;
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      
+      .courseProgress {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        
+        .progressHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+          
+          .progressTitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+          }
+          
+          .currentWeek {
+            font-size: 14px;
+            color: #1890ff;
+            font-weight: 500;
+            background: rgba(24, 144, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 16px;
+          }
+        }
+        
+        :global {
+          .ant-progress {
+            margin-bottom: 12px;
+            
+            .ant-progress-bg {
+              height: 8px;
+              border-radius: 4px;
+            }
+          }
+        }
+        
+        .progressText {
+          text-align: center;
+          font-size: 14px;
+          color: #666;
+          font-weight: 500;
+        }
+      }
+    }
+    
+    .courseInfoRight {
+      flex: 0 0 35%;
+      display: flex;
+      align-items: center;
+      min-height: 370px;
+      justify-content: center;
+      border-radius: 12px;
+      height: 100%;
+      background:rgba(24,144,255,0.08);
+      border-radius:12px;
+      box-shadow:0 2px 12px rgba(24,144,255,0.08);
+      :global {
+        .echarts-for-react {
+          width:100% !important;
+          height:100% !important;
+        }
+      }
+    }
+  }
+  
+  .tagRadarSection {
+    .sectionTitle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      
+      .sectionIcon {
+        color: #1890ff;
+        font-size: 20px;
+      }
+    }
+    
+    .tagRadarChart {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      
+      .tagRadarItem {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        
+        .tagName {
+          min-width: 80px;
+          font-size: 14px;
+          color: #1a1a1a;
+          font-weight: 500;
+        }
+        
+        .tagBar {
+          flex: 1;
+          height: 12px;
+          background: #f0f0f0;
+          border-radius: 6px;
+          overflow: hidden;
+          
+          .tagBarFill {
+            height: 100%;
+            background: linear-gradient(90deg, #1890ff, #722ed1);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+          }
+        }
+        
+        .tagPercentage {
+          min-width: 50px;
+          text-align: right;
+          font-size: 14px;
+          color: #1890ff;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  
+  .suggestionsSection {
+    .sectionTitle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      
+      .sectionIcon {
+        color: #1890ff;
+        font-size: 20px;
+      }
+    }
+    
+    .suggestionsList {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      
+      .suggestionItem {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid;
+        transition: all 0.3s;
+        
+        &:hover {
+          transform: translateX(4px);
+        }
+        
+        &.warning {
+          background: #fff7e6;
+          border-left-color: #fa8c16;
+          
+          .suggestionIcon {
+            color: #fa8c16;
+          }
+        }
+        
+        &.info {
+          background: #e6f7ff;
+          border-left-color: #1890ff;
+          
+          .suggestionIcon {
+            color: #1890ff;
+          }
+        }
+        
+        &.success {
+          background: #f6ffed;
+          border-left-color: #52c41a;
+          
+          .suggestionIcon {
+            color: #52c41a;
+          }
+        }
+        
+        .suggestionIcon {
+          font-size: 20px;
+          margin-top: 2px;
+        }
+        
+        .suggestionContent {
+          flex: 1;
+          
+          .suggestionTitle {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+          }
+          
+          .suggestionText {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+          }
+        }
+      }
+      
+      .noSuggestions {
+        text-align: center;
+        color: #ccc;
+        font-size: 14px;
+        padding: 40px;
+        font-style: italic;
+        background: #f8f9fa;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+.reminderGroup{
+  background-color: #f3f9ff;
+  align-items: center;
+  border-radius: 10px;
+  padding:10px;
+  border: 1px solid #d6e4ff;
+}

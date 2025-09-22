@@ -1,0 +1,302 @@
+@import '../../resource.scss';
+.videoResContainer {
+  padding: 24px;
+  background: #ffffff;
+  min-height: 100vh;
+  border-radius: 16px;
+  // 内容区域样式
+  .contentSection {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    .videoGrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    h{
+       margin-left: 30px;
+        font-size: 19px;
+        color: #1375d1;
+        margin-bottom: 0;
+        font-weight: 600;
+      }
+    .paginationWrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+      padding: 16px 0;
+
+      :global(.ant-pagination) {
+        .ant-pagination-item {
+          border-radius: 8px;
+          
+          &:hover {
+            border-color: #1890ff;
+            a {
+              color: #1890ff;
+            }
+          }
+          
+          &-active {
+            background: #1890ff;
+            border-color: #1890ff;
+            
+            a {
+              color: white;
+            }
+            
+            &:hover {
+              background: #40a9ff;
+              a {
+                color: white;
+              }
+            }
+          }
+        }
+
+        .ant-pagination-prev,
+        .ant-pagination-next {
+          button {
+            border-radius: 8px;
+            
+            &:hover {
+              border-color: #1890ff;
+              color: #1890ff;
+            }
+          }
+        }
+
+        .ant-pagination-options {
+          .ant-select-selector {
+            border-radius: 8px;
+          }
+          
+          .ant-pagination-options-quick-jumper {
+            input {
+              border-radius: 8px;
+              
+              &:hover,
+              &:focus {
+                border-color: #1890ff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .videoCard {
+      flex: 0 0 calc(30% - 16px);
+      min-width: 300px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      min-height: 80px;
+      border: none;
+      display: flex;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+
+      @media (max-width: 1200px) {
+        flex: 0 0 calc(50% - 12px);
+      }
+
+      @media (max-width: 768px) {
+        flex: 0 0 100%;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(51, 205, 216, 0.1);
+
+        .playButton {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+      .videoThumbnail{
+        width: 60%;
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-right: 16px;
+      }
+      .videoPreview {
+        position: relative;
+        padding-top: 56.25%; // 16:9 比例
+        background: #f0f0f0;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        
+        }
+
+        .duration {
+          position: absolute;
+          bottom: 8px;
+          right: 8px;
+          background: rgba(0, 0, 0, 0.75);
+          color: white;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          backdrop-filter: blur(4px);
+        }
+
+        .playButton {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.9);
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(0, 0, 0, 0.75);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(4px);
+
+          :global(.anticon) {
+            font-size: 24px;
+            color: white;
+          }
+        }
+
+        .videoQuality {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: rgba(0, 0, 0, 0.75);
+          padding: 2px 8px;
+          border-radius: 4px;
+          backdrop-filter: blur(4px);
+
+          :global(.ant-badge-status-dot) {
+            width: 8px;
+            height: 8px;
+          }
+
+          :global(.ant-badge-status-text) {
+            color: white;
+            font-size: 12px;
+            margin-left: 6px;
+          }
+        }
+
+        .processingStatus {
+          position: absolute;
+          top: 8px;
+          left: 8px;
+          background: rgba(0, 0, 0, 0.75);
+          padding: 2px 8px;
+          border-radius: 4px;
+          backdrop-filter: blur(4px);
+
+          :global(.ant-badge-status-processing) {
+            width: 8px;
+            height: 8px;
+          }
+
+          :global(.ant-badge-status-text) {
+            color: white;
+            font-size: 12px;
+            margin-left: 6px;
+          }
+        }
+      }
+
+      .videoInfo {
+        padding: 16px;
+        width: 40%;
+
+        h3 {
+          margin: 0 0 8px;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.4;
+          color: rgba(0, 0, 0, 0.85);
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .videoMeta {
+          margin-bottom: 8px;
+          color: rgba(0, 0, 0, 0.45);
+          font-size: 12px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+
+          span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          }
+        }
+
+        .videoDescription {
+          margin: 0 0 12px;
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.65);
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .videoTags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          :global(.ant-tag) {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      :global(.ant-card-actions) {
+        background: #fafafa;
+        border-top: 1px solid #f0f0f0;
+
+        li {
+          margin: 12px 0;
+
+          .anticon {
+            color: rgba(0, 0, 0, 0.45);
+            font-size: 16px;
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: #1890ff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

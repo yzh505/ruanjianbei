@@ -1,0 +1,496 @@
+.resourcesContainer {
+  padding: 24px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f1f1f;
+    padding-left: 10px;
+    border-left: 4px solid var(--primary-color, #1890ff);
+  }
+
+  // 模块标题样式
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f1f1f;
+    margin-bottom: 24px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary-color, #1890ff);
+  }
+}
+.contentItem {
+  padding: 10px;
+  margin: 0 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  &:hover {
+    background: #f0f7ff;
+    transform: translateX(4px);
+  }
+  .contentInfo {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    .contentType {
+      svg {
+        color: #1890ff;
+      }
+    }
+    .contentDetails {
+      flex: 1;
+      h4 {
+        margin: 0;
+        font-size: 13px;
+        color: #1f1f1f;
+      }
+      .contentDate {
+        font-size: 12px;
+        color: #666;
+      }
+    }
+  }
+}
+// 返回按钮样式
+.backButton {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 80px;
+  height: 30px;
+  z-index: 1000;
+  color: #1890ff;
+  background: rgba(24, 144, 255, 0.1);
+  border: 1px solid rgba(24, 144, 255, 0.2);
+  border-radius: 20px;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+  }
+}
+// 标题区域样式
+.headerSection {
+  margin-bottom: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #1890ff 0%, #722ed1 100%);
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .titleWrapper {
+    max-width: 600px;
+
+    :global {
+      .ant-typography {
+        color: white;
+        margin: 0;
+      }
+    }
+
+    .mainTitle {
+      font-size: 28px !important;
+      font-weight: 600;
+      margin-bottom: 8px !important;
+      background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+  }
+
+  .headerStats {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+
+    .statItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      .statValue {
+        font-size: 24px;
+        font-weight: 600;
+        color: #1890ff;
+      }
+
+      .statLabel {
+        font-size: 12px;
+        opacity: 0.8;
+        color:  #1890ff;
+      }
+    }
+
+    .divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+// 左侧部分样式
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.dataBoard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.dataCard {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(var(--card-color-rgb));
+    opacity: 0.1;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      opacity: 0.15;
+    }
+
+    .iconWrapper {
+      transform: scale(1.1);
+    }
+  }
+
+  .cardHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+
+    .iconWrapper {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--card-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+
+      :global(.anticon) {
+        font-size: 20px;
+        color: white;
+      }
+    }
+
+    .cardTitle {
+      h4{
+        margin: 0;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  .cardDescription {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .cardCount {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-right: 20px;
+    span:first-child {
+      font-size: 24px;
+      color: var(--card-color);
+    }
+  }
+}
+
+// 流程中心样式
+.workflowSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.workflowContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.workflowGroup {
+  h4 {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 12px;
+  }
+}
+
+.workflowItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  .workTitle {
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+  }
+
+  .workDate {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+  }
+}
+
+// 系统公告样式
+.announcementSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.announcementItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  .announcementIcon {
+    color: #1890ff;
+    margin-right: 12px;
+  }
+
+  .announcementTitle {
+    flex: 1;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+  }
+
+  .announcementDate {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
+  }
+}
+
+// 右侧部分样式
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// 最近活动样式
+.recentSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.contentItem {
+  padding: 12px;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+
+  .contentInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .contentType {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #e6f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      :global(.anticon) {
+        color: #1890ff;
+        font-size: 16px;
+      }
+    }
+
+    .contentDetails {
+      flex: 1;
+
+      h4 {
+        margin: 0;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .contentDate {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+}
+
+// 统计部分样式
+.statsSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.statItem {
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// 响应式设计
+@media (max-width: 1200px) {
+  .headerSection {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+
+    .titleWrapper {
+      max-width: 100%;
+    }
+
+    .headerStats {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .dataBoard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .headerSection {
+    padding: 20px;
+
+    .headerStats {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+
+      .divider {
+        width: 80%;
+        height: 1px;
+      }
+    }
+  }
+  .resourcesContainer {
+    padding: 16px;
+  }
+
+  .dataBoard,
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
