@@ -24,56 +24,6 @@ const MindMap = ({code,setCode,zoom=1}) => {
         relationship: ''
     });
     const [currentNode, setCurrentNode] = useState(null);
-        
-    const [content, setContent] = useState( [
-                {
-                    "entity1": "基因工程",
-                    "ship": "基于",
-                    "entity2": "生物化学"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "应用领域",
-                    "entity2": "创造符合人类需要的产品"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "应用领域",
-                    "entity2": "解决常规方法不能解决的问题"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "基本操作程序",
-                    "entity2": "通过不同方法得到目的基因"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "基本操作程序",
-                    "entity2": "将目的基因与基因表达所需的多种元件组装构成表达载体"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "基本操作程序",
-                    "entity2": "将表达载体导入受体细胞"
-                },
-                {
-                    "entity1": "基因工程",
-                    "ship": "相关技术",
-                    "entity2": "蛋白质工程"
-                },
-                {
-                    "entity1": "蛋白质工程",
-                    "ship": "产生背景",
-                    "entity2": "基因工程只能生产自然界已存在的蛋白质，不一定完全符合人类生产和生活的需要"
-                },
-                {
-                    "entity1": "蛋白质工程",
-                    "ship": "技术手段",
-                    "entity2": "基因修饰"
-                },
-              
-    ]);
-
     // 从自定义输入内容生成思维导图
     const generateCustomMindMap = async () => {
        renderMindMap(code)

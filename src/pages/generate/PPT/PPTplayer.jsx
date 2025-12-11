@@ -51,7 +51,7 @@ const PPTplayer = () => {
         "userId": userInfo.uid,
         "textName":saveFormData.name,
         "textIntroduction": saveFormData.notes,
-        "textPicture": "https://weizixuan.oss-cn-https://meta-doc.oss-cn-shanghai.aliyuncs.com/ppt/137357/1947546151599345664.pptx?Expires=1753228484&OSSAccessKeyId=LTAI5tAfZYeAw8hN3gDzs7sx&Signature=cbX%2BeByNTm%2BRfNT5fn3i3mqnxl0%3D",
+        "textPicture": "",
         'textUrl':PPTurl
       });
       setIsSaveModalOpen(false);
